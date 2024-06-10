@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="?attr/colorControlHighlight" />
+            <corners android:topLeftRadius="25dp" android:topRightRadius="20dp" />
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Quizy Bharat</string>
+    <string name="webClientId">795849471537-al69n33vhdcjstsuik4faqkuvovusf4h.apps.googleusercontent.com</string>
+
+    <string name="disclaimer">If you violate our policy we can able to ban or temporarily disable your account.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

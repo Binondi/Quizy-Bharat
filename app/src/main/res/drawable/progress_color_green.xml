@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background shape -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="?attr/colorControlHighlight" /> <!-- Set the color you want for the background -->
+        </shape>
+    </item>
+    <!-- Progress shape -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="@color/green" /> <!-- Set the color you want for the filled progress -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#616161</color>
+    <color name="blue">#0276F3</color>
+    <color name="green">#05D532</color>
+    <color name="transparent">#001ED111</color>
+    <color name="semiTransparent">#016B11D1</color>
+    <color name="darkGreen">#087732</color>
+    <color name="lightGreen">#8AFBB5</color>
+    <color name="background">#141414</color>
+    <color name="rippleColor">#607E6F</color>
+    <color name="red">#FF0000</color>
+    <color name="yellow">#FFC107</color>
+</resources>

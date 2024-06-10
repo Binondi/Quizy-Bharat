@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="80dp"
+        android:id="@+id/frameLayout"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="8dp"
+        android:background="@drawable/bottom_nav_corner"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:id="@+id/home"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/homeIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/home"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:padding="2dp"
+                android:text="Home"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:id="@+id/search"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:background="@drawable/ripple_round"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/profileIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/search" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:padding="2dp"
+                android:text="Search"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:id="@+id/plus"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_green"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/plus"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:id="@+id/random"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/randomIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/random"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:padding="2dp"
+                android:text="Random"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activity"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/activityIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/activity" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:padding="2dp"
+                android:text="Activity"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</RelativeLayout>
