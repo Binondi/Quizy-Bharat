@@ -12,69 +12,66 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import devs.org.quizzybharat.Adapters.MyQuizAdapter
-import devs.org.quizzybharat.Data.QuestionData
-import devs.org.quizzybharat.databinding.FragmentMyQuizBinding
+import devs.org.quizzybharat.Adapters.ActivityAdapter
+import devs.org.quizzybharat.Data.ActivityData
+import devs.org.quizzybharat.databinding.FragmentParticipatedBinding
 
 
-class MyQuizFragment : Fragment() {
+class ParticipatedFragment : Fragment() {
 
-    private lateinit var binding:FragmentMyQuizBinding
-    private val activityData = FirebaseDatabase.getInstance().reference.child("QuizSet")
+    private val activityData = FirebaseDatabase.getInstance().reference.child("Completed")
     private val auth = FirebaseAuth.getInstance()
-    private lateinit var list:List<QuestionData>
+    private lateinit var list:ArrayList<ActivityData>
 
     private var userId = ""
-    private lateinit var adapter: MyQuizAdapter
+    private lateinit var adapter: ActivityAdapter
+    private lateinit var binding:FragmentParticipatedBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMyQuizBinding.inflate(inflater, container, false)
+        binding = FragmentParticipatedBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         userId = auth.uid.toString()
 
         list = ArrayList()
-        binding.myQuizRecycler.visibility = View.GONE
+        binding.activityRecyclerView.visibility = View.GONE
         binding.shimmerLayout.visibility = View.VISIBLE
-        binding.noItem.visibility = View.GONE
         setAdapter()
 
-
         loadDataOfFirebase()
+
     }
 
     private fun loadDataOfFirebase() {
-        activityData.addValueEventListener(object : ValueEventListener {
+        activityData.child(userId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val activityList = mutableListOf<QuestionData>()
+                val activityList = mutableListOf<ActivityData>()
                 for (activitySnapshot in snapshot.children) {
-                    val questionData = activitySnapshot.getValue(QuestionData::class.java)
-                    if (questionData != null && questionData.userId == userId) {
-                        activityList.add(questionData)
+                    val activityDataa = activitySnapshot.getValue(ActivityData::class.java)
+                    activityDataa?.let {
+                        activityList.add(it)
                     }
                 }
                 activityList.reverse()
-                list = activityList
+                list = activityList as ArrayList<ActivityData>
                 if (isAdded) {
                     setAdapter()
                 }
 
-                if (list.isEmpty()){
-                    binding.myQuizRecycler.visibility = View.GONE
-                    binding.shimmerLayout.visibility = View.GONE
-                    binding.noItem.visibility = View.VISIBLE
-
-                }else {
-                    binding.myQuizRecycler.visibility = View.VISIBLE
+                if (list.isNotEmpty()) {
+                    binding.activityRecyclerView.visibility = View.VISIBLE
                     binding.shimmerLayout.visibility = View.GONE
                     binding.noItem.visibility = View.GONE
+                }else{
+                    binding.activityRecyclerView.visibility = View.GONE
+                    binding.shimmerLayout.visibility = View.GONE
+                    binding.noItem.visibility = View.VISIBLE
                 }
             }
 
@@ -86,9 +83,9 @@ class MyQuizFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setAdapter(){
-        adapter = MyQuizAdapter(requireContext(), list)
-        binding.myQuizRecycler.layoutManager = GridLayoutManager(requireContext(),1)
-        binding.myQuizRecycler.adapter = adapter
+        adapter = ActivityAdapter(requireContext(), list)
+        binding.activityRecyclerView.layoutManager = GridLayoutManager(requireContext(),1)
+        binding.activityRecyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
     }
 }
